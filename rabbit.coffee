@@ -2,7 +2,7 @@ events = require('events');
 
 class rabbit extends events.EventEmitter
 
-  constructor:(@port, @events) ->
+  constructor:(@port) ->
     @clients = [];
 
   listen: ->

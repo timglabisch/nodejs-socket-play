@@ -1,1 +1,10 @@
-coffee -p -j foo.coffee rabbit.coffee rabbit/client.coffee db.coffee plugins/websocket/client.coffee plugins/websocket.coffee socket.coffee > foo.js && node foo.js
+coffee -p -j \
+foo.coffee \
+rabbit.coffee \
+rabbit/client.coffee \
+plugins/db.coffee \
+plugins/websocket/client.coffee \
+plugins/websocket.coffee \
+plugins/log \
+socket.coffee >  \
+foo.js && node foo.js

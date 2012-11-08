@@ -1,2 +1,2 @@
-class websocket_client
+class plugin_websocket_client
   constructor: (@socket) ->

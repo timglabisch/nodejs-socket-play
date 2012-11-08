@@ -1,5 +1,5 @@
 (function() {
-  var db, events, main, rabbit, rabbit_client, websocket, websocket_client,
+  var events, main, plugin_db, plugin_log, plugin_websocket, plugin_websocket_client, rabbit, rabbit_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -9,9 +9,8 @@
 
     __extends(rabbit, _super);
 
-    function rabbit(port, events) {
+    function rabbit(port) {
       this.port = port;
-      this.events = events;
       this.clients = [];
     }
 
@@ -71,31 +70,37 @@
 
   })(events.EventEmitter);
 
-  db = (function() {
+  plugin_db = (function() {
 
-    function db() {}
+    function plugin_db(rabbit, mysqlconfig) {
+      this.rabbit = rabbit;
+      this.mysqlconfig = mysqlconfig;
+      this.rabbit.on('connection', (function(rabbit_client) {
+        return rabbit_client.on('data', this.onRabbitClientData.bind(this));
+      }).bind(this));
+    }
 
-    db.prototype.sendToAll = function(msg) {
-      return console.log('send to db!!!' + msg);
+    plugin_db.prototype.onRabbitClientData = function(msg, rabbit_client) {
+      return console.log("plugin_db - onRabbitClientData " + msg);
     };
 
-    return db;
+    return plugin_db;
 
   })();
 
-  websocket_client = (function() {
+  plugin_websocket_client = (function() {
 
-    function websocket_client(socket) {
+    function plugin_websocket_client(socket) {
       this.socket = socket;
     }
 
-    return websocket_client;
+    return plugin_websocket_client;
 
   })();
 
-  websocket = (function() {
+  plugin_websocket = (function() {
 
-    function websocket(rabbit, port) {
+    function plugin_websocket(rabbit, port) {
       this.rabbit = rabbit;
       this.port = port;
       this.clients = [];
@@ -106,25 +111,57 @@
       }).bind(this));
     }
 
-    websocket.prototype.onRabbitClientData = function(data, rabbit_client) {
+    plugin_websocket.prototype.onRabbitClientData = function(data, rabbit_client) {
       return this.sendToAll(data);
     };
 
-    websocket.prototype.addClientBySocket = function(socket) {
+    plugin_websocket.prototype.addClientBySocket = function(socket) {
       console.log("new client!");
       return this.addClient(new websocket_client(socket));
     };
 
-    websocket.prototype.addClient = function(client) {
+    plugin_websocket.prototype.addClient = function(client) {
       return this.clients.push(client);
     };
 
-    websocket.prototype.sendToAll = function(msg) {
+    plugin_websocket.prototype.sendToAll = function(msg) {
       console.log("websocket - sendToAll " + msg);
       return this.connection.sockets.send(msg);
     };
 
-    return websocket;
+    return plugin_websocket;
+
+  })();
+
+  plugin_log = (function() {
+
+    function plugin_log(rabbit) {
+      this.rabbit = rabbit;
+      this.rabbit.on('connection', (function(rabbit_client) {
+        rabbit_client.on('data', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        rabbit_client.on('end', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        rabbit_client.on('timeout', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        rabbit_client.on('drain', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        rabbit_client.on('error', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        rabbit_client.on('close', (function() {
+          return console.log("rabbitOnData", arguments);
+        }));
+        return console.log("rabbitConnected", arguments);
+      }).bind(this));
+      console.log("init logger");
+    }
+
+    return plugin_log;
 
   })();
 
@@ -134,7 +171,9 @@
 
     main.prototype.run = function() {
       this.rabbit = new rabbit(5678);
-      new websocket(this.rabbit, 72);
+      new plugin_websocket(this.rabbit, 72);
+      new plugin_db(this.rabbit, "some configuration");
+      new plugin_log(this.rabbit);
       this.rabbit.on('connection', (function(client) {
         return console.log("yea!!!!!");
       }).bind(this));

@@ -1,4 +1,4 @@
-class websocket
+class plugin_websocket
   constructor:(@rabbit, @port) ->
     @clients = [];
     @connection = require("socket.io").listen(port);
