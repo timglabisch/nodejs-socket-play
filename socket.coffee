@@ -1,2 +1,11 @@
+class main
+  run: ->
+    @webserver = new websocket 72
 
-(new rabbit 5678, new websocket 72).listen()
+    @rabbit = new rabbit 5678
+    @rabbit.on connection (client ->
+        console.log("yea!!!!!");
+      ).bind(this)
+
+
+    @rabbit.listen();

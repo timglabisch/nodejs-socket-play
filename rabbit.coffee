@@ -1,21 +1,19 @@
-class rabbit
-  constructor:(@port, @websocket) ->
+require('events');
+
+class rabbit extends events.EventEmitter
+
+  constructor:(@port, @events) ->
+    @clients = [];
 
   listen: ->
     console.log "rabbit_listen"
     @connection = require('net').createServer();
     @connection.listen @port, (-> )
-    @connection.on 'connection', @onConnect.bind(this)
+    @connection.on 'connection', @addClientBySocket.bind(this)
 
-  onData:(data)->
-    console.log 'got data! ' + data;
-    @websocket.sendToAll data;
+  addClientBySocket: (socket) ->
+    @addClient new rabbit_client socket
 
-  onConnect:(@client) ->
-    @client.on 'data', @onData.bind(this)
-    console.log('connected!');
-
-  onDisconnect: ->
-
-  write:(v) ->
-    @connection.write(v);
+  addClient:(client) ->
+    @emit 'connection', client, @this
+    @clients.push(client);
