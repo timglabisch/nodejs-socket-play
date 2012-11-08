@@ -1,9 +1,9 @@
 (function() {
-  var db, main, rabbit, rabbit_client, websocket, websocket_client,
+  var db, events, main, rabbit, rabbit_client, websocket, websocket_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  require('events');
+  events = require('events');
 
   rabbit = (function(_super) {
 
@@ -35,7 +35,7 @@
 
   })(events.EventEmitter);
 
-  require('events');
+  events = require('events');
 
   rabbit_client = (function(_super) {
 
@@ -147,14 +147,16 @@
     main.prototype.run = function() {
       this.webserver = new websocket(72);
       this.rabbit = new rabbit(5678);
-      this.rabbit.on(connection((client(function() {
+      this.rabbit.on('connection', (function(client) {
         return console.log("yea!!!!!");
-      })).bind(this)));
+      }).bind(this));
       return this.rabbit.listen();
     };
 
     return main;
 
   })();
+
+  (new main).run();
 
 }).call(this);

@@ -3,9 +3,12 @@ class main
     @webserver = new websocket 72
 
     @rabbit = new rabbit 5678
-    @rabbit.on connection (client ->
+    @rabbit.on 'connection', ((client)->
         console.log("yea!!!!!");
       ).bind(this)
 
 
     @rabbit.listen();
+
+
+(new main).run();

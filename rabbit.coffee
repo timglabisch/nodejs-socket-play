@@ -1,4 +1,4 @@
-require('events');
+events = require('events');
 
 class rabbit extends events.EventEmitter
 
