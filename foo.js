@@ -1,5 +1,5 @@
 (function() {
-  var events, main, plugin_db, plugin_log, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
+  var events, main, plugin_db, plugin_log, plugin_stats, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -42,6 +42,7 @@
 
     function rabbit_client(socket) {
       this.socket = socket;
+      this.socket.setEncoding('UTF-8');
       this.socket.on('data', (function() {
         return this.emit('data', arguments[0], this);
       }).bind(this));
@@ -85,6 +86,57 @@
     };
 
     return plugin_db;
+
+  })();
+
+  plugin_stats = (function() {
+
+    function plugin_stats(rabbit) {
+      this.rabbit = rabbit;
+      this.rabbitOnConnect = 0;
+      this.clientOnData = 0;
+      this.clientOnEnd = 0;
+      this.clientOnTimeout = 0;
+      this.clientOnDrain = 0;
+      this.clientOnError = 0;
+      this.clientOnClose = 0;
+      this.rabbit.on('connection', (function(rabbit_client) {
+        rabbit_client.on('data', (function() {
+          return this.clientOnData++;
+        }).bind(this));
+        rabbit_client.on('end', (function() {
+          return this.clientOnEnd++;
+        }).bind(this));
+        rabbit_client.on('timeout', (function() {
+          return this.clientOnTimeout++;
+        }).bind(this));
+        rabbit_client.on('drain', (function() {
+          return this.clientOnDrain++;
+        }).bind(this));
+        rabbit_client.on('error', (function() {
+          return this.clientOnError++;
+        }).bind(this));
+        rabbit_client.on('close', (function() {
+          return this.clientOnClose++;
+        }).bind(this));
+        this.rabbitOnConnect++;
+        return rabbit_client.on('data', this.flush.bind(this));
+      }).bind(this));
+    }
+
+    plugin_stats.prototype.flush = function() {
+      return console.log({
+        rabbitOnConnect: this.rabbitOnConnect,
+        clientOnData: this.clientOnData,
+        clientOnEnd: this.clientOnEnd,
+        clientOnTimeout: this.clientOnTimeout,
+        clientOnDrain: this.clientOnDrain,
+        clientOnError: this.clientOnError,
+        clientOnClose: this.clientOnClose
+      });
+    };
+
+    return plugin_stats;
 
   })();
 
@@ -194,6 +246,11 @@
   program.run(56789, function(rabbit, port) {
     console.log('debug started on port ' + port);
     return new plugin_log(rabbit);
+  });
+
+  program.run(456, function(rabbit, port) {
+    console.log('stats started on port ' + port);
+    return new plugin_stats(rabbit);
   });
 
 }).call(this);

@@ -15,3 +15,7 @@ program.run 5678, (rabbit, port) ->
 program.run 56789, (rabbit, port) ->
   console.log('debug started on port '+ port);
   new plugin_log rabbit
+
+program.run 456, (rabbit, port) ->
+  console.log('stats started on port '+ port);
+  new plugin_stats rabbit

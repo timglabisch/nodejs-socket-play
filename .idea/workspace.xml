@@ -22,10 +22,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="socket.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="socket.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="32" selection-start="309" selection-end="309" vertical-scroll-proportion="0.26548672">
+            <state line="20" column="18" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stats.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugins/stats.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="46" selection-start="633" selection-end="633" vertical-scroll-proportion="0.3307393">
               <folding />
             </state>
           </provider>
@@ -61,7 +70,7 @@
       <file leaf-file-name="client.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="21" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
+            <state line="4" column="30" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,8 +79,11 @@
       <file leaf-file-name="foo.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/foo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="0" selection-start="5608" selection-end="5608" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="256" column="0" selection-start="7404" selection-end="7404" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1352418103000" expanded="true" signature="2917:2942" placeholder="{...}" />
+                <marker date="1352418103000" expanded="true" signature="3615:3685" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,7 +91,7 @@
       <file leaf-file-name="build.sh" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="11" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0">
+            <state line="5" column="13" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -136,12 +148,13 @@
         <option value="$PROJECT_DIR$/plugins/rabbit/client.coffee" />
         <option value="$PROJECT_DIR$/plugins/rabbit.coffee" />
         <option value="$PROJECT_DIR$/rabbit.coffee" />
-        <option value="$PROJECT_DIR$/rabbit/client.coffee" />
         <option value="$PROJECT_DIR$/plugins/db.coffee" />
         <option value="$PROJECT_DIR$/plugins/log.coffee" />
-        <option value="$PROJECT_DIR$/build.sh" />
         <option value="$PROJECT_DIR$/foo.js" />
+        <option value="$PROJECT_DIR$/build.sh" />
         <option value="$PROJECT_DIR$/socket.coffee" />
+        <option value="$PROJECT_DIR$/rabbit/client.coffee" />
+        <option value="$PROJECT_DIR$/plugins/stats.coffee" />
       </list>
     </option>
   </component>
@@ -196,6 +209,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ben" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ben" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rabbit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ben" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ben" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -237,7 +278,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24958402" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24958402" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -320,13 +361,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="11" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/plugins/log.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="29" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
@@ -355,13 +389,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="21" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/foo.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -369,16 +396,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/foo.js">
+    <entry file="file://$PROJECT_DIR$/build.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="0" selection-start="5608" selection-end="5608" vertical-scroll-proportion="0.0">
+        <state line="5" column="13" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/socket.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="32" selection-start="309" selection-end="309" vertical-scroll-proportion="0.26548672">
+        <state line="20" column="18" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/foo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="256" column="0" selection-start="7404" selection-end="7404" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1352418103000" expanded="true" signature="2917:2942" placeholder="{...}" />
+            <marker date="1352418103000" expanded="true" signature="3615:3685" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/stats.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="46" selection-start="633" selection-end="633" vertical-scroll-proportion="0.3307393">
           <folding />
         </state>
       </provider>
