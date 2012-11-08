@@ -15,7 +15,6 @@
     }
 
     rabbit.prototype.listen = function() {
-      console.log("rabbit_listen");
       this.connection = require('net').createServer();
       this.connection.listen(this.port, (function() {}));
       return this.connection.on('connection', this.addClientBySocket.bind(this));
@@ -168,7 +167,7 @@
     };
 
     plugin_websocket.prototype.addClientBySocket = function(socket) {
-      console.log("new client!");
+      console.log("websocket - new client!");
       return this.addClient(new websocket_client(socket));
     };
 

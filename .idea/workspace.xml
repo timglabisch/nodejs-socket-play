@@ -25,16 +25,16 @@
       <file leaf-file-name="socket.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/socket.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="18" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+            <state line="19" column="46" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stats.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="stats.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/stats.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="46" selection-start="633" selection-end="633" vertical-scroll-proportion="0.3307393">
+            <state line="21" column="16" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -61,7 +61,7 @@
       <file leaf-file-name="rabbit.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
+            <state line="7" column="12" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,7 +70,7 @@
       <file leaf-file-name="client.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="30" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
+            <state line="12" column="14" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -80,10 +80,7 @@
         <entry file="file://$PROJECT_DIR$/foo.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="256" column="0" selection-start="7404" selection-end="7404" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1352418103000" expanded="true" signature="2917:2942" placeholder="{...}" />
-                <marker date="1352418103000" expanded="true" signature="3615:3685" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,10 +103,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="websocket.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="websocket.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/websocket.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="4" selection-start="575" selection-end="618" vertical-scroll-proportion="0.0">
+            <state line="13" column="29" selection-start="453" selection-end="453" vertical-scroll-proportion="0.25291827">
               <folding />
             </state>
           </provider>
@@ -143,11 +140,9 @@
         <option value="$PROJECT_DIR$/db.coffee" />
         <option value="$PROJECT_DIR$/websocket.coffee" />
         <option value="$PROJECT_DIR$/foo.coffee" />
-        <option value="$PROJECT_DIR$/plugins/websocket.coffee" />
         <option value="$PROJECT_DIR$/plugins/websocket/client.coffee" />
         <option value="$PROJECT_DIR$/plugins/rabbit/client.coffee" />
         <option value="$PROJECT_DIR$/plugins/rabbit.coffee" />
-        <option value="$PROJECT_DIR$/rabbit.coffee" />
         <option value="$PROJECT_DIR$/plugins/db.coffee" />
         <option value="$PROJECT_DIR$/plugins/log.coffee" />
         <option value="$PROJECT_DIR$/foo.js" />
@@ -155,6 +150,8 @@
         <option value="$PROJECT_DIR$/socket.coffee" />
         <option value="$PROJECT_DIR$/rabbit/client.coffee" />
         <option value="$PROJECT_DIR$/plugins/stats.coffee" />
+        <option value="$PROJECT_DIR$/rabbit.coffee" />
+        <option value="$PROJECT_DIR$/plugins/websocket.coffee" />
       </list>
     </option>
   </component>
@@ -361,34 +358,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/log.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="29" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/db.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/websocket.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="4" selection-start="575" selection-end="618" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/foo.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -403,9 +372,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/socket.coffee">
+    <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
+        <state line="12" column="14" selection-start="543" selection-end="543" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -413,23 +382,48 @@
     <entry file="file://$PROJECT_DIR$/foo.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="256" column="0" selection-start="7404" selection-end="7404" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1352418103000" expanded="true" signature="2917:2942" placeholder="{...}" />
-            <marker date="1352418103000" expanded="true" signature="3615:3685" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client.coffee">
+    <entry file="file://$PROJECT_DIR$/socket.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="30" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
+        <state line="19" column="46" selection-start="467" selection-end="467" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="12" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/log.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="643" selection-end="643" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/db.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/stats.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="46" selection-start="633" selection-end="633" vertical-scroll-proportion="0.3307393">
+        <state line="21" column="16" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/websocket.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="453" selection-end="453" vertical-scroll-proportion="0.25291827">
           <folding />
         </state>
       </provider>

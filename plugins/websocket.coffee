@@ -11,7 +11,7 @@ class plugin_websocket
     @sendToAll(data);
 
   addClientBySocket: (socket) ->
-    console.log "new client!"
+    console.log "websocket - new client!"
     @addClient new websocket_client socket
 
   addClient:(client) ->

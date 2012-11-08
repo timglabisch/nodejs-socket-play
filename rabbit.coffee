@@ -6,7 +6,6 @@ class rabbit extends events.EventEmitter
     @clients = [];
 
   listen: ->
-    console.log "rabbit_listen"
     @connection = require('net').createServer();
     @connection.listen @port, (-> )
     @connection.on 'connection', @addClientBySocket.bind(this)
