@@ -1,0 +1,1 @@
+coffee -p -j foo.coffee rabbit.coffee db.coffee websocket/client.coffee websocket.coffee socket.coffee > foo.js && node foo.js

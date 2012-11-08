@@ -10,9 +10,9 @@
 
     rabbit.prototype.listen = function() {
       console.log("rabbit_listen");
-      this.connection = net.createServer();
-      this.connection.listen(this.port, this.onConnect.bind(this));
-      return this.connection.on('data', this.onData.bind(this));
+      this.connection = require('net').createServer();
+      this.connection.listen(this.port, (function() {}));
+      return this.connection.on('connection', this.onConnect.bind(this));
     };
 
     rabbit.prototype.onData = function(data) {
@@ -20,7 +20,9 @@
       return this.websocket.sendToAll(data);
     };
 
-    rabbit.prototype.onConnect = function() {
+    rabbit.prototype.onConnect = function(client) {
+      this.client = client;
+      this.client.on('data', this.onData.bind(this));
       return console.log('connected!');
     };
 
@@ -83,6 +85,6 @@
 
   })();
 
-  new rabbit(5678, new websocket(72));
+  (new rabbit(5678, new websocket(72))).listen();
 
 }).call(this);

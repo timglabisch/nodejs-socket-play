@@ -3,15 +3,16 @@ class rabbit
 
   listen: ->
     console.log "rabbit_listen"
-    @connection = net.createServer();
-    @connection.listen @port, @onConnect.bind(this)
-    @connection.on 'data', @onData.bind(this)
+    @connection = require('net').createServer();
+    @connection.listen @port, (-> )
+    @connection.on 'connection', @onConnect.bind(this)
 
   onData:(data)->
     console.log 'got data! ' + data;
     @websocket.sendToAll data;
 
-  onConnect: ->
+  onConnect:(@client) ->
+    @client.on 'data', @onData.bind(this)
     console.log('connected!');
 
   onDisconnect: ->
