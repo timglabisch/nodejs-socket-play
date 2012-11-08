@@ -1,5 +1,5 @@
 (function() {
-  var events, main, plugin_db, plugin_log, plugin_websocket, plugin_websocket_client, rabbit, rabbit_client,
+  var events, main, plugin_db, plugin_log, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -169,21 +169,31 @@
 
     function main() {}
 
-    main.prototype.run = function() {
-      this.rabbit = new rabbit(5678);
-      new plugin_websocket(this.rabbit, 72);
-      new plugin_db(this.rabbit, "some configuration");
-      new plugin_log(this.rabbit);
-      this.rabbit.on('connection', (function(client) {
-        return console.log("yea!!!!!");
-      }).bind(this));
-      return this.rabbit.listen();
+    main.prototype.run = function(port, cb) {
+      var rb;
+      rb = new rabbit(port);
+      if (typeof cb === "function") {
+        cb(rb, port);
+      }
+      rb.listen();
+      return rb;
     };
 
     return main;
 
   })();
 
-  (new main).run();
+  program = new main;
+
+  program.run(5678, function(rabbit, port) {
+    console.log('started on port ' + 5678);
+    new plugin_websocket(rabbit, 72);
+    return new plugin_db(rabbit, "some configuration");
+  });
+
+  program.run(56789, function(rabbit, port) {
+    console.log('debug started on port ' + port);
+    return new plugin_log(rabbit);
+  });
 
 }).call(this);

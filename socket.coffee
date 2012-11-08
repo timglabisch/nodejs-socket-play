@@ -1,17 +1,17 @@
 class main
-  run: ->
-    @rabbit = new rabbit 5678
+  run:(port, cb) ->
+    rb = new rabbit port
+    cb?(rb, port);
+    rb.listen();
+    rb
 
-    # plugins
-    new plugin_websocket @rabbit, 72
-    new plugin_db @rabbit, "some configuration"
-    new plugin_log @rabbit
+program = new main
 
-    @rabbit.on 'connection', ((client)->
-        console.log("yea!!!!!");
-    ).bind(this)
+program.run 5678, (rabbit, port) ->
+  console.log('started on port '+ 5678);
+  new plugin_websocket rabbit, 72
+  new plugin_db rabbit, "some configuration"
 
-    @rabbit.listen();
-
-
-(new main).run();
+program.run 56789, (rabbit, port) ->
+  console.log('debug started on port '+ port);
+  new plugin_log rabbit
