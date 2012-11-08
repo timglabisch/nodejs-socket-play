@@ -43,45 +43,25 @@
 
     function rabbit_client(socket) {
       this.socket = socket;
-      this.on('data', this.onData.bind(this));
-      this.on('end', this.onEnd.bind(this));
-      this.on('timeout', this.onTimeout.bind(this));
-      this.on('drain', this.onDrain.bind(this));
-      this.on('error', this.onError.bind(this));
-      this.on('close', this.onClose.bind(this));
       this.socket.on('data', (function() {
-        return this.emit('data', arguments);
+        return this.emit('data', arguments[0], this);
       }).bind(this));
       this.socket.on('end', (function() {
-        return this.emit('end', arguments);
+        return this.emit('end', this);
       }).bind(this));
       this.socket.on('timeout', (function() {
-        return this.emit('timeout', arguments);
+        return this.emit('timeout', this);
       }).bind(this));
       this.socket.on('drain', (function() {
-        return this.emit('drain', arguments);
+        return this.emit('drain', this);
       }).bind(this));
       this.socket.on('error', (function() {
-        return this.emit('error', arguments);
+        return this.emit('error', this);
       }).bind(this));
       this.socket.on('close', (function() {
-        return this.emit('close', arguments);
+        return this.emit('close', this);
       }).bind(this));
     }
-
-    rabbit_client.prototype.onData = function(data) {
-      return console.log('client send ' + data);
-    };
-
-    rabbit_client.prototype.onEnd = function() {};
-
-    rabbit_client.prototype.onTimeout = function() {};
-
-    rabbit_client.prototype.onDrain = function() {};
-
-    rabbit_client.prototype.onError = function() {};
-
-    rabbit_client.prototype.onClose = function() {};
 
     rabbit_client.prototype.write = function(v) {
       return this.socket.write(v);
@@ -115,12 +95,20 @@
 
   websocket = (function() {
 
-    function websocket(port) {
+    function websocket(rabbit, port) {
+      this.rabbit = rabbit;
       this.port = port;
       this.clients = [];
       this.connection = require("socket.io").listen(port);
       this.connection.on('connection', this.addClientBySocket.bind(this));
+      this.rabbit.on('connection', (function(rabbit_client) {
+        return rabbit_client.on('data', this.onRabbitClientData.bind(this));
+      }).bind(this));
     }
+
+    websocket.prototype.onRabbitClientData = function(data, rabbit_client) {
+      return this.sendToAll(data);
+    };
 
     websocket.prototype.addClientBySocket = function(socket) {
       console.log("new client!");
@@ -145,8 +133,8 @@
     function main() {}
 
     main.prototype.run = function() {
-      this.webserver = new websocket(72);
       this.rabbit = new rabbit(5678);
+      new websocket(this.rabbit, 72);
       this.rabbit.on('connection', (function(client) {
         return console.log("yea!!!!!");
       }).bind(this));
