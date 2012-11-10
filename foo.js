@@ -1,5 +1,5 @@
 (function() {
-  var events, main, plugin_db, plugin_log, plugin_stats, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
+  var events, main, plugin_db, plugin_hallo, plugin_log, plugin_stats, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -216,6 +216,19 @@
 
   })();
 
+  plugin_hallo = (function() {
+
+    function plugin_hallo(rabbit) {
+      this.rabbit = rabbit;
+      this.rabbit.on('connection', function() {
+        return console.log("lauf hase lauf!!!");
+      });
+    }
+
+    return plugin_hallo;
+
+  })();
+
   main = (function() {
 
     function main() {}
@@ -239,7 +252,8 @@
   program.run(5678, function(rabbit, port) {
     console.log('started on port ' + 5678);
     new plugin_websocket(rabbit, 72);
-    return new plugin_db(rabbit, "some configuration");
+    new plugin_db(rabbit, "some configuration");
+    return new plugin_hallo(rabbit);
   });
 
   program.run(56789, function(rabbit, port) {

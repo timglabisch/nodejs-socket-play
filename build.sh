@@ -7,5 +7,6 @@ plugins/stats.coffee \
 plugins/websocket/client.coffee \
 plugins/websocket.coffee \
 plugins/log \
+plugins/hallo \
 socket.coffee >  \
 foo.js && node foo.js
