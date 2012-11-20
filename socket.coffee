@@ -9,9 +9,9 @@ program = new main
 
 program.run 5678, (rabbit, port) ->
   console.log('started on port '+ 5678);
+  new plugin_webserver rabbit, 8585
   new plugin_websocket rabbit, 72
   new plugin_db rabbit, "some configuration"
-  new plugin_hallo rabbit
 
 program.run 56789, (rabbit, port) ->
   console.log('debug started on port '+ port);

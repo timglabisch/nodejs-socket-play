@@ -1,5 +1,5 @@
 (function() {
-  var events, main, plugin_db, plugin_hallo, plugin_log, plugin_stats, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
+  var events, main, plugin_db, plugin_log, plugin_stats, plugin_webserver, plugin_websocket, plugin_websocket_client, program, rabbit, rabbit_client,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -184,6 +184,31 @@
 
   })();
 
+  plugin_webserver = (function() {
+
+    function plugin_webserver(rabbit, port) {
+      this.rabbit = rabbit;
+      this.port = port;
+      require('http').createServer(this.onRequest.bind(this)).listen(this.port);
+    }
+
+    plugin_webserver.prototype.onRequest = function(request, response) {
+      var client, _i, _len, _ref;
+      _ref = this.rabbit.clients;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        client = _ref[_i];
+        client.write('hi from web!');
+      }
+      response.writeHead(200, {
+        'Content-Type': 'text/html'
+      });
+      return response.end("foo");
+    };
+
+    return plugin_webserver;
+
+  })();
+
   plugin_log = (function() {
 
     function plugin_log(rabbit) {
@@ -216,19 +241,6 @@
 
   })();
 
-  plugin_hallo = (function() {
-
-    function plugin_hallo(rabbit) {
-      this.rabbit = rabbit;
-      this.rabbit.on('connection', function() {
-        return console.log("lauf hase lauf!!!");
-      });
-    }
-
-    return plugin_hallo;
-
-  })();
-
   main = (function() {
 
     function main() {}
@@ -251,9 +263,9 @@
 
   program.run(5678, function(rabbit, port) {
     console.log('started on port ' + 5678);
+    new plugin_webserver(rabbit, 8585);
     new plugin_websocket(rabbit, 72);
-    new plugin_db(rabbit, "some configuration");
-    return new plugin_hallo(rabbit);
+    return new plugin_db(rabbit, "some configuration");
   });
 
   program.run(56789, function(rabbit, port) {
